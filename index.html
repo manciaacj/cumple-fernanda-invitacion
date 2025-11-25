@@ -41,12 +41,11 @@
             backdrop-filter: blur(2px); 
             z-index: -1;
         }
-        /* Fin de Fondo */
 
         .container {
             max-width: 600px;
             margin: 0 auto;
-            background: rgba(255, 255, 255, 0.95); /* Opacidad alta para texto claro */
+            background: rgba(255, 255, 255, 0.95); 
             box-shadow: 0 10px 25px rgba(0,0,0,0.1);
             overflow: hidden;
             min-height: 100vh;
@@ -56,9 +55,9 @@
         header {
             background: var(--primary);
             color: white;
-            padding: 40px 20px 60px; /* Más padding para la onda */
+            padding: 40px 20px 60px; 
             position: relative;
-            /* Creación de una 'ola' simple con border-radius */
+            /* Estilo Ola */
             border-bottom-left-radius: 50% 20px;
             border-bottom-right-radius: 50% 20px;
         }
@@ -94,23 +93,29 @@
             text-transform: uppercase;
             margin-top: 10px;
         }
-        
-        /* Resto de estilos */
+
+        /* --- SECCIÓN DE DETALLES EN 2 COLUMNAS (Estilo Imagen) --- */
         .info-card {
             padding: 30px;
         }
 
         .details {
+            display: flex; /* Divide en columnas */
+            flex-wrap: wrap; 
+            justify-content: space-between;
             background: #fff;
             margin: 20px 0;
-            padding: 20px;
+            padding: 10px;
             border: 2px dashed var(--primary);
             border-radius: 15px;
         }
 
         .detail-item {
+            width: 48%; /* Dos columnas casi iguales */
             margin: 15px 0;
             font-size: 1.1em;
+            text-align: left;
+            padding-left: 1%;
         }
 
         .detail-item strong {
@@ -118,8 +123,10 @@
             display: block;
             text-transform: uppercase;
             font-size: 0.9em;
+            margin-bottom: 5px;
         }
 
+        /* Botones, RSVP y Audio mantienen estilos anteriores */
         .btn {
             display: inline-block;
             padding: 15px 30px;
@@ -151,6 +158,20 @@
             margin-top: 20px;
         }
 
+        .rsvp-title-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+
+        .rsvp-title {
+            font-family: 'Pacifico', cursive; 
+            color: var(--primary);
+            font-size: 2em;
+            margin: 0 10px;
+        }
+        
         input, select {
             width: 80%;
             padding: 12px;
@@ -184,13 +205,14 @@
 
     <div class="container">
         <header>
-            <p class="subtitle">¡Estás invitado al cumpleaños de!</p>
+            <p class="subtitle">¡Aloha! ¡Estás invitado al Cumple de!</p>
             
             <div class="title-area">
                 <img src="fernanda.png" alt="Foto de Fernanda" class="fernanda-photo">
                 
                 <h1>Fernanda Mancia</h1>
             </div>
+            <p style="font-size: 0.9em; opacity: 0.8;"><source src="audio.mp3"></p>
         </header>
 
         <div class="info-card">
@@ -198,42 +220,47 @@
             
             <div class="details">
                 <div class="detail-item">
-                    <strong>📅 Fecha</strong>
+                    <strong>📅 Fecta</strong>
                     Sábado 6 de Diciembre
                 </div>
                 <div class="detail-item">
-                    <strong>⏰ Hora</strong>
+                    <strong>⏰ Fietailo</strong>
                     3:30 PM
                 </div>
                 <div class="detail-item">
                     <strong>📍 Lugar</strong>
-                    Casa de la abuelita Argie, Acajutla
+                    Casa de la abuelita Argie, Acajutía
                 </div>
                 <div class="detail-item">
-                    <strong>🏝️ Temática</strong>
-                    Lilo & Stitch ¡Trae tu mejor outfit playero!
+                    <strong>🎭 Temática</strong>
+                    Lilo & Stitch !Trae tu oufit playero!
                 </div>
             </div>
-
-            <a href="https://maps.app.goo.gl/VnYT1QqrdPiSR3xp8" target="_blank" class="btn btn-map">📍 Ver Ubicación en Mapa</a>
             
-            <button onclick="addToCalendar()" class="btn btn-map" style="background-color: #333;">📅 Agregar a Calendario</button>
+            <div style="margin-top: 20px;">
+                <a href="https://maps.app.goo.gl/VnYT1QqrdPiSR3xp8" target="_blank" class="btn btn-map">📍 Ver Ubicación</a>
+                <button onclick="addToCalendar()" class="btn btn-map" style="background-color: #333;">📅 Agregar a Calendario</button>
+            </div>
             
         </div>
 
         <div class="rsvp-section">
-            <h2 style="font-family: 'Pacifico', cursive; color: var(--primary);">¡Aloha! Confirma tu Asistencia 🌺</h2>
-            <p>Por favor confirma para reservar tu espacio en la isla</p>
+            <div class="rsvp-title-container">
+                <h2 class="rsvp-title">¡Aloha Fernanda!</h2>
+                <span style="font-size: 2em;">🌺</span>
+            </div>
+            <p style="font-size: 0.9em;">Por favor confirma para reservar tu espacio en la isla</p>
             
-            <input type="text" id="guestName" placeholder="Tu Nombre Completo">
+            <input type="text" id="guestName" placeholder="Iguest Name">
             <select id="guestCount">
-                <option value="1">Asistiré solo yo</option>
-                <option value="2">Vamos 2 personas</option>
-                <option value="3">Vamos 3 personas</option>
-                <option value="4">Familia completa (4+)</option>
+                <option value="1">1 Asistiré solo yo</option>
+                <option value="2">2 Vamos 2 personas</option>
+                <option value="3">3 Vamos 3 personas</option>
+                <option value="4">4 Familia completa (4+)</option>
             </select>
-
-            <button onclick="sendToWhatsapp()" class="btn">Confirmar por WhatsApp 💬</button>
+            
+            <button class="btn" style="background-color: #0077be;">Confirmar por</button>
+            <button onclick="sendToWhatsapp()" class="btn" style="background-color: #ff6f61;">Btn WhatsApp 💬</button>
         </div>
 
         <footer style="padding: 20px; font-size: 0.8em; color: #777;">
@@ -247,15 +274,13 @@
     <script>
         // --- FUNCIÓN AGREGAR A CALENDARIO ---
         function addToCalendar() {
-            // NOTA: Usa esta función tal cual. El navegador se encargará de rellenar la fecha.
-            const googleMapsLocation = "Casa de la abuelita Argelia, Acajutla"; 
+            // ⚠️ CUIDADO: La fecha y hora son estimaciones. Si tu cumpleaños no es 6 de diciembre de 2025, cámbialos.
+            const googleMapsLocation = "Casa de la abuelita Argie, Acajutia"; 
             const title = "Fiesta de Cumpleaños de Fernanda Mancia - Lilo & Stitch";
             const details = "¡Ohana significa familia! No te pierdas esta celebración. RSVP por WhatsApp.";
 
-            // ⚠️ CUIDADO: La fecha y hora son estimaciones para el ejemplo. Si tu cumpleaños no es 6 de diciembre de 2025, cámbialos.
-            // Formato de hora UTC: YYYYMMDDTHHMMSSZ
-            const startTime = "20251206T213000Z"; // 6 de Diciembre, 3:30 PM (Hora local), convertida a UTC.
-            const endTime = "20251207T003000Z"; // Evento de 3 horas.
+            const startTime = "20251206T213000Z"; 
+            const endTime = "20251207T003000Z"; 
 
             const url = `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(title)}&dates=${startTime}/${endTime}&details=${encodeURIComponent(details)}&location=${encodeURIComponent(googleMapsLocation)}`;
 
@@ -271,12 +296,15 @@
             const name = document.getElementById('guestName').value;
             const count = document.getElementById('guestCount').options[document.getElementById('guestCount').selectedIndex].text;
 
-            if(name.trim() === "") {
+            if(name.trim() === "" || name.trim() === "Iguest Name") {
                 alert("Por favor escribe tu nombre para confirmar 🌺");
                 return;
             }
 
-            const message = `¡Aloha! 🌺 Soy *${name}*. Quiero confirmar mi asistencia al cumple de Fernanda. ${count}. ¡Nos vemos ahí!`;
+            // Se extrae solo el número de personas del texto
+            const personCount = count.split(" ")[0];
+
+            const message = `¡Aloha! 🌺 Soy *${name}*. Quiero confirmar mi asistencia al cumple de Fernanda. Somos ${personCount} persona(s). ¡Nos vemos ahí!`;
             
             const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
             
