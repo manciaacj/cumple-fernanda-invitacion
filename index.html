@@ -46,20 +46,21 @@
         .container {
             max-width: 600px;
             margin: 0 auto;
-            background: rgba(255, 255, 255, 0.9); 
+            background: rgba(255, 255, 255, 0.95); /* Opacidad alta para texto claro */
             box-shadow: 0 10px 25px rgba(0,0,0,0.1);
             overflow: hidden;
             min-height: 100vh;
         }
 
-        /* --- ESTILOS DE ENCABEZADO Y FOTO DE CUMPLEAÑERA --- */
+        /* --- ESTILOS DE ENCABEZADO (AZUL CON ONDAS) --- */
         header {
             background: var(--primary);
             color: white;
-            padding: 40px 20px;
+            padding: 40px 20px 60px; /* Más padding para la onda */
+            position: relative;
+            /* Creación de una 'ola' simple con border-radius */
             border-bottom-left-radius: 50% 20px;
             border-bottom-right-radius: 50% 20px;
-            position: relative;
         }
 
         .title-area {
@@ -93,7 +94,7 @@
             text-transform: uppercase;
             margin-top: 10px;
         }
-
+        
         /* Resto de estilos */
         .info-card {
             padding: 30px;
@@ -205,23 +206,23 @@
                     3:30 PM
                 </div>
                 <div class="detail-item">
-                    <strong>🏖️ Lugar</strong>
+                    <strong>📍 Lugar</strong>
                     Casa de la abuelita Argie, Acajutla
                 </div>
                 <div class="detail-item">
-                    <strong>🎭 Temática</strong>
-                    Lilo & Stitch ¡Trae tu outfit playero!
+                    <strong>🏝️ Temática</strong>
+                    Lilo & Stitch ¡Trae tu mejor outfit playero!
                 </div>
             </div>
 
-            <a href="https://maps.app.goo.gl/m9E65A1rmMuBgt9a7" target="_blank" class="btn btn-map">📍 Ver Ubicación en Mapa</a>
+            <a href="https://maps.app.goo.gl/VnYT1QqrdPiSR3xp8" target="_blank" class="btn btn-map">📍 Ver Ubicación en Mapa</a>
             
             <button onclick="addToCalendar()" class="btn btn-map" style="background-color: #333;">📅 Agregar a Calendario</button>
             
         </div>
 
         <div class="rsvp-section">
-            <h2 style="font-family: 'Pacifico', cursive; color: var(--primary);">Confirmar Asistencia</h2>
+            <h2 style="font-family: 'Pacifico', cursive; color: var(--primary);">¡Aloha! Confirma tu Asistencia 🌺</h2>
             <p>Por favor confirma para reservar tu espacio en la isla</p>
             
             <input type="text" id="guestName" placeholder="Tu Nombre Completo">
@@ -236,7 +237,7 @@
         </div>
 
         <footer style="padding: 20px; font-size: 0.8em; color: #777;">
-            Te esperamos 🌺<br>
+            Te esperamos🌺<br>
             <span style="font-size: 0.7em; margin-top: 5px; display: block;">Rodrigo Mancia ®</span>
         </footer>
     </div>
@@ -246,15 +247,14 @@
     <script>
         // --- FUNCIÓN AGREGAR A CALENDARIO ---
         function addToCalendar() {
-            // NOTA: Para Google Calendar, el formato de fecha debe ser YYYYMMDDTHHMMSSZ (zona horaria Z)
-            // Evento: Sábado 6 de Diciembre a las 3:30 PM (15:30)
-            
-            // Reemplaza TUS_COORDENADAS_AQUI con las coordenadas de Google Maps para un evento más preciso.
-            const googleMapsLocation = "Casa de la abuelita Argie, Acajutla"; 
+            // NOTA: Usa esta función tal cual. El navegador se encargará de rellenar la fecha.
+            const googleMapsLocation = "Casa de la abuelita Argelia, Acajutla"; 
             const title = "Fiesta de Cumpleaños de Fernanda Mancia - Lilo & Stitch";
-            const details = "¡Ohana significa familia! No te pierdas esta celebración de cumpleaños. Trae tu mejor outfit playero. RSVP por WhatsApp.";
+            const details = "¡Ohana significa familia! No te pierdas esta celebración. RSVP por WhatsApp.";
 
-            const startTime = "20251206T213000Z"; // 6 de Diciembre, 15:30 (Hora local), convertida a UTC (ejemplo)
+            // ⚠️ CUIDADO: La fecha y hora son estimaciones para el ejemplo. Si tu cumpleaños no es 6 de diciembre de 2025, cámbialos.
+            // Formato de hora UTC: YYYYMMDDTHHMMSSZ
+            const startTime = "20251206T213000Z"; // 6 de Diciembre, 3:30 PM (Hora local), convertida a UTC.
             const endTime = "20251207T003000Z"; // Evento de 3 horas.
 
             const url = `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(title)}&dates=${startTime}/${endTime}&details=${encodeURIComponent(details)}&location=${encodeURIComponent(googleMapsLocation)}`;
@@ -264,6 +264,7 @@
 
 
         // --- CONFIGURACIÓN DE WHATSAPP ---
+        // ⚠️ ¡CÁMBIALO! Tu número de teléfono con código de país 
         const phoneNumber = "50376553642"; 
         
         function sendToWhatsapp() {
