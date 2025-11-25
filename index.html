@@ -6,15 +6,14 @@
     <title>¡Aloha! Cumpleaños de Fernanda Mancia</title>
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* --- COLORES Y VARIABLES --- */
+        /* --- ESTILOS GENERALES (FONDO Y ESTRUCTURA) --- */
         :root {
             --primary: #0077be; /* Azul Océano */
             --accent: #ff6f61; /* Color Hibisco/Coral */
-            --light: #e0f7fa; 
+            --light: #e0f7fa; /* Azul muy claro */
             --text: #333;
         }
 
-        /* --- ESTILOS GENERALES (FONDO) --- */
         body {
             font-family: 'Quicksand', sans-serif;
             margin: 0;
@@ -22,7 +21,7 @@
             color: var(--text);
             text-align: center;
             
-            /* FONDO PRINCIPAL DIFUMINADO */
+            /* --- FONDO CON IMAGEN DIFUMINADA --- */
             background-image: url('background.png'); 
             background-size: cover;
             background-position: center center;
@@ -42,40 +41,27 @@
             backdrop-filter: blur(2px); 
             z-index: -1;
         }
+        /* Fin de Fondo */
 
         .container {
             max-width: 600px;
             margin: 0 auto;
-            background: rgba(255, 255, 255, 0.95); 
+            background: rgba(255, 255, 255, 0.9); 
             box-shadow: 0 10px 25px rgba(0,0,0,0.1);
             overflow: hidden;
             min-height: 100vh;
         }
 
-        /* --- ESTILOS DE ENCABEZADO (AZUL Y ONDAS) --- */
+        /* --- ESTILOS DE ENCABEZADO Y FOTO DE CUMPLEAÑERA --- */
         header {
             background: var(--primary);
             color: white;
-            padding: 40px 20px 60px; 
+            padding: 40px 20px;
+            border-bottom-left-radius: 50% 20px;
+            border-bottom-right-radius: 50% 20px;
             position: relative;
-            /* La forma de onda la daremos con una imagen para que sea más precisa */
-            border-bottom-left-radius: 0; 
-            border-bottom-right-radius: 0;
-            margin-bottom: 20px; /* Separación después de la ola */
         }
-        
-        /* Imagen de Ola en el Header (DEBES SUBIR 'ondas-header.png') */
-        .wave-decoration {
-            position: absolute;
-            bottom: -1px; /* Para que se superponga ligeramente */
-            left: 0;
-            width: 100%;
-            height: 50px; /* Ajusta este valor si la imagen de onda es más alta */
-            background-image: url('ondas-header.png'); 
-            background-size: cover;
-            background-repeat: no-repeat;
-        }
-        
+
         .title-area {
             display: flex; 
             align-items: center;
@@ -91,7 +77,6 @@
             margin: 0 15px;
             border: 4px solid var(--accent); 
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-            z-index: 2; /* Asegura que la foto esté sobre la ola (si se superponen) */
         }
 
         h1 {
@@ -101,47 +86,30 @@
             text-shadow: 2px 2px 0px rgba(0,0,0,0.2);
             line-height: 1.2;
         }
-        
-        /* --- ESTILOS DE ADORNOS GRÁFICOS INTERNOS --- */
-        .info-card {
-            padding: 30px;
-            position: relative; /* Para posicionar adornos absolutos */
-        }
-        
-        /* Imagen de adornos de Stitch (DEBES SUBIR 'stitch-adornos.png') */
-        .adornos-stitch {
-            position: absolute;
-            top: 50px; /* Ajusta la posición vertical */
-            left: 10px; /* Ajusta la posición horizontal */
-            width: 80px;
-            height: 80px;
-            opacity: 0.5; /* Opacidad para que parezca sombreado */
-            background-image: url('stitch-adornos.png'); 
-            background-size: contain;
-            background-repeat: no-repeat;
-            z-index: 0; /* Asegura que esté detrás del texto */
+
+        .subtitle {
+            font-size: 1.2em;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-top: 10px;
         }
 
         /* Resto de estilos */
+        .info-card {
+            padding: 30px;
+        }
+
         .details {
-            display: flex; 
-            flex-wrap: wrap; 
-            justify-content: space-between;
             background: #fff;
             margin: 20px 0;
-            padding: 10px;
+            padding: 20px;
             border: 2px dashed var(--primary);
             border-radius: 15px;
-            position: relative; /* Para que el contenido esté sobre el adorno */
-            z-index: 1;
         }
 
         .detail-item {
-            width: 48%; 
             margin: 15px 0;
             font-size: 1.1em;
-            text-align: left;
-            padding-left: 1%;
         }
 
         .detail-item strong {
@@ -149,7 +117,6 @@
             display: block;
             text-transform: uppercase;
             font-size: 0.9em;
-            margin-bottom: 5px;
         }
 
         .btn {
@@ -168,6 +135,11 @@
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
 
+        .btn:hover {
+            transform: scale(1.05);
+            background-color: #ff5040;
+        }
+
         .btn-map {
             background-color: var(--primary);
         }
@@ -178,20 +150,6 @@
             margin-top: 20px;
         }
 
-        .rsvp-title-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 10px;
-        }
-
-        .rsvp-title {
-            font-family: 'Pacifico', cursive; 
-            color: var(--primary);
-            font-size: 2em;
-            margin: 0 10px;
-        }
-        
         input, select {
             width: 80%;
             padding: 12px;
@@ -225,26 +183,21 @@
 
     <div class="container">
         <header>
-            <p class="subtitle">¡Aloha! ¡Estás invitados de!</p>
+            <p class="subtitle">¡Estás invitado al cumpleaños de!</p>
             
             <div class="title-area">
                 <img src="fernanda.png" alt="Foto de Fernanda" class="fernanda-photo">
                 
                 <h1>Fernanda Mancia</h1>
             </div>
-            <p style="font-size: 0.9em; opacity: 0.8;"><source src="audio.mp3"></p>
-            
-            <div class="wave-decoration"></div>
         </header>
 
         <div class="info-card">
             <p>¡Ohana significa familia, y la familia nunca te abandona... ni se pierde esta fiesta!</p>
             
-            <div class="adornos-stitch"></div>
-            
             <div class="details">
                 <div class="detail-item">
-                    <strong>📅 FecHa</strong>
+                    <strong>📅 Fecha</strong>
                     Sábado 6 de Diciembre
                 </div>
                 <div class="detail-item">
@@ -252,39 +205,34 @@
                     3:30 PM
                 </div>
                 <div class="detail-item">
-                    <strong>📍 Lugar</strong>
+                    <strong>🏖️ Lugar</strong>
                     Casa de la abuelita Argie
                 </div>
                 <div class="detail-item">
                     <strong>🎭 Temática</strong>
-                    Lilo & Stitch !Outfit Playero!
+                    Lilo & Stitch ¡Trae tu outfit playero!
                 </div>
             </div>
+
+            <a href="https://maps.app.goo.gl/VnYT1QqrdPiSR3xp8" target="_blank" class="btn btn-map">📍 Ver Ubicación en Mapa</a>
             
-            <div style="margin-top: 20px;">
-                <a href="https://maps.app.goo.gl/VnYT1QqrdPiSR3xp8" target="_blank" class="btn btn-map">📍 Ver Ubicación</a>
-                <button onclick="addToCalendar()" class="btn btn-map" style="background-color: #333;">📅 Agregar a Calendario</button>
-            </div>
+            <button onclick="addToCalendar()" class="btn btn-map" style="background-color: #333;">📅 Agregar a Calendario</button>
             
         </div>
 
         <div class="rsvp-section">
-            <div class="rsvp-title-container">
-                <h2 class="rsvp-title">¡Aloha Fernanda!</h2>
-                <span style="font-size: 2em;">🌺</span>
-            </div>
-            <p style="font-size: 0.9em;">Por favor confirma para reservar tu espacio en la isla</p>
+            <h2 style="font-family: 'Pacifico', cursive; color: var(--primary);">Confirmar Asistencia</h2>
+            <p>Por favor confirma para reservar tu espacio en la isla</p>
             
-            <input type="text" id="guestName" placeholder="Iguest Name">
+            <input type="text" id="guestName" placeholder="Tu Nombre Completo">
             <select id="guestCount">
                 <option value="1">Asistiré solo yo</option>
                 <option value="2">Vamos 2 personas</option>
                 <option value="3">Vamos 3 personas</option>
                 <option value="4">Familia completa (4+)</option>
             </select>
-            
-            <button class="btn" style="background-color: #0077be;">Confirmar por</button>
-            <button onclick="sendToWhatsapp()" class="btn" style="background-color: #ff6f61;">Btn WhatsApp 💬</button>
+
+            <button onclick="sendToWhatsapp()" class="btn">Confirmar por WhatsApp 💬</button>
         </div>
 
         <footer style="padding: 20px; font-size: 0.8em; color: #777;">
@@ -298,13 +246,16 @@
     <script>
         // --- FUNCIÓN AGREGAR A CALENDARIO ---
         function addToCalendar() {
-            // ⚠️ CUIDADO: La fecha y hora son estimaciones. Si tu cumpleaños no es 6 de diciembre de 2025, cámbialos.
-            const googleMapsLocation = "Casa de la abuelita Argie, Acajutla"; 
+            // NOTA: Para Google Calendar, el formato de fecha debe ser YYYYMMDDTHHMMSSZ (zona horaria Z)
+            // Evento: Sábado 6 de Diciembre a las 3:30 PM (15:30)
+            
+            // Reemplaza TUS_COORDENADAS_AQUI con las coordenadas de Google Maps para un evento más preciso.
+            const googleMapsLocation = "Casa de la abuelita Argelia, Acajutla"; 
             const title = "Fiesta de Cumpleaños de Fernanda Mancia - Lilo & Stitch";
-            const details = "¡Ohana significa familia! No te pierdas esta celebración. RSVP por WhatsApp.";
+            const details = "¡Ohana significa familia! No te pierdas esta celebración de cumpleaños. Trae tu mejor actitud playera. RSVP por WhatsApp.";
 
-            const startTime = "20251206T213000Z"; 
-            const endTime = "20251207T003000Z"; 
+            const startTime = "20251206T213000Z"; // 6 de Diciembre, 15:30 (Hora local), convertida a UTC (ejemplo)
+            const endTime = "20251207T003000Z"; // Evento de 3 horas.
 
             const url = `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(title)}&dates=${startTime}/${endTime}&details=${encodeURIComponent(details)}&location=${encodeURIComponent(googleMapsLocation)}`;
 
@@ -313,21 +264,18 @@
 
 
         // --- CONFIGURACIÓN DE WHATSAPP ---
-        // ⚠️ ¡CÁMBIALO! Tu número de teléfono con código de país 
         const phoneNumber = "50376553642"; 
         
         function sendToWhatsapp() {
             const name = document.getElementById('guestName').value;
             const count = document.getElementById('guestCount').options[document.getElementById('guestCount').selectedIndex].text;
 
-            if(name.trim() === "" || name.trim() === "Iguest Name") {
+            if(name.trim() === "") {
                 alert("Por favor escribe tu nombre para confirmar 🌺");
                 return;
             }
 
-            const personCount = count.split(" ")[0];
-
-            const message = `¡Aloha! 🌺 Soy *${name}*. Quiero confirmar mi asistencia al cumple de Fernanda. Somos ${personCount} persona(s). ¡Nos vemos ahí!`;
+            const message = `¡Aloha! 🌺 Soy *${name}*. Quiero confirmar mi asistencia al cumple de Fernanda. ${count}. ¡Nos vemos ahí!`;
             
             const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
             
