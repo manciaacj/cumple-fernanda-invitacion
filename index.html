@@ -6,14 +6,15 @@
     <title>¡Aloha! Cumpleaños de Fernanda Mancia</title>
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* --- ESTILOS GENERALES (FONDO Y ESTRUCTURA) --- */
+        /* --- COLORES Y VARIABLES --- */
         :root {
             --primary: #0077be; /* Azul Océano */
             --accent: #ff6f61; /* Color Hibisco/Coral */
-            --light: #e0f7fa; /* Azul muy claro */
+            --light: #e0f7fa; 
             --text: #333;
         }
 
+        /* --- ESTILOS GENERALES (FONDO) --- */
         body {
             font-family: 'Quicksand', sans-serif;
             margin: 0;
@@ -21,7 +22,7 @@
             color: var(--text);
             text-align: center;
             
-            /* --- FONDO CON IMAGEN DIFUMINADA --- */
+            /* FONDO PRINCIPAL DIFUMINADO */
             background-image: url('background.png'); 
             background-size: cover;
             background-position: center center;
@@ -51,17 +52,30 @@
             min-height: 100vh;
         }
 
-        /* --- ESTILOS DE ENCABEZADO (AZUL CON ONDAS) --- */
+        /* --- ESTILOS DE ENCABEZADO (AZUL Y ONDAS) --- */
         header {
             background: var(--primary);
             color: white;
             padding: 40px 20px 60px; 
             position: relative;
-            /* Estilo Ola */
-            border-bottom-left-radius: 50% 20px;
-            border-bottom-right-radius: 50% 20px;
+            /* La forma de onda la daremos con una imagen para que sea más precisa */
+            border-bottom-left-radius: 0; 
+            border-bottom-right-radius: 0;
+            margin-bottom: 20px; /* Separación después de la ola */
         }
-
+        
+        /* Imagen de Ola en el Header (DEBES SUBIR 'ondas-header.png') */
+        .wave-decoration {
+            position: absolute;
+            bottom: -1px; /* Para que se superponga ligeramente */
+            left: 0;
+            width: 100%;
+            height: 50px; /* Ajusta este valor si la imagen de onda es más alta */
+            background-image: url('ondas-header.png'); 
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        
         .title-area {
             display: flex; 
             align-items: center;
@@ -77,6 +91,7 @@
             margin: 0 15px;
             border: 4px solid var(--accent); 
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            z-index: 2; /* Asegura que la foto esté sobre la ola (si se superponen) */
         }
 
         h1 {
@@ -86,21 +101,30 @@
             text-shadow: 2px 2px 0px rgba(0,0,0,0.2);
             line-height: 1.2;
         }
-
-        .subtitle {
-            font-size: 1.2em;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-top: 10px;
-        }
-
-        /* --- SECCIÓN DE DETALLES EN 2 COLUMNAS (Estilo Imagen) --- */
+        
+        /* --- ESTILOS DE ADORNOS GRÁFICOS INTERNOS --- */
         .info-card {
             padding: 30px;
+            position: relative; /* Para posicionar adornos absolutos */
+        }
+        
+        /* Imagen de adornos de Stitch (DEBES SUBIR 'stitch-adornos.png') */
+        .adornos-stitch {
+            position: absolute;
+            top: 50px; /* Ajusta la posición vertical */
+            left: 10px; /* Ajusta la posición horizontal */
+            width: 80px;
+            height: 80px;
+            opacity: 0.5; /* Opacidad para que parezca sombreado */
+            background-image: url('stitch-adornos.png'); 
+            background-size: contain;
+            background-repeat: no-repeat;
+            z-index: 0; /* Asegura que esté detrás del texto */
         }
 
+        /* Resto de estilos */
         .details {
-            display: flex; /* Divide en columnas */
+            display: flex; 
             flex-wrap: wrap; 
             justify-content: space-between;
             background: #fff;
@@ -108,10 +132,12 @@
             padding: 10px;
             border: 2px dashed var(--primary);
             border-radius: 15px;
+            position: relative; /* Para que el contenido esté sobre el adorno */
+            z-index: 1;
         }
 
         .detail-item {
-            width: 48%; /* Dos columnas casi iguales */
+            width: 48%; 
             margin: 15px 0;
             font-size: 1.1em;
             text-align: left;
@@ -126,7 +152,6 @@
             margin-bottom: 5px;
         }
 
-        /* Botones, RSVP y Audio mantienen estilos anteriores */
         .btn {
             display: inline-block;
             padding: 15px 30px;
@@ -141,11 +166,6 @@
             cursor: pointer;
             font-size: 1em;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-
-        .btn:hover {
-            transform: scale(1.05);
-            background-color: #ff5040;
         }
 
         .btn-map {
@@ -205,7 +225,7 @@
 
     <div class="container">
         <header>
-            <p class="subtitle">¡Aloha! ¡Estás invitado al Cumple de!</p>
+            <p class="subtitle">¡Aloha! ¡Estás invitados de!</p>
             
             <div class="title-area">
                 <img src="fernanda.png" alt="Foto de Fernanda" class="fernanda-photo">
@@ -213,14 +233,18 @@
                 <h1>Fernanda Mancia</h1>
             </div>
             <p style="font-size: 0.9em; opacity: 0.8;"><source src="audio.mp3"></p>
+            
+            <div class="wave-decoration"></div>
         </header>
 
         <div class="info-card">
             <p>¡Ohana significa familia, y la familia nunca te abandona... ni se pierde esta fiesta!</p>
             
+            <div class="adornos-stitch"></div>
+            
             <div class="details">
                 <div class="detail-item">
-                    <strong>📅 Fecha</strong>
+                    <strong>📅 FecHa</strong>
                     Sábado 6 de Diciembre
                 </div>
                 <div class="detail-item">
@@ -233,7 +257,7 @@
                 </div>
                 <div class="detail-item">
                     <strong>🎭 Temática</strong>
-                    Lilo & Stitch !Trae tu oufit playero!
+                    Lilo & Stitch !Outfit Playero!
                 </div>
             </div>
             
@@ -253,10 +277,10 @@
             
             <input type="text" id="guestName" placeholder="Iguest Name">
             <select id="guestCount">
-                <option value="1">1 Asistiré solo yo</option>
-                <option value="2">2 Vamos 2 personas</option>
-                <option value="3">3 Vamos 3 personas</option>
-                <option value="4">4 Familia completa (4+)</option>
+                <option value="1">Asistiré solo yo</option>
+                <option value="2">Vamos 2 personas</option>
+                <option value="3">Vamos 3 personas</option>
+                <option value="4">Familia completa (4+)</option>
             </select>
             
             <button class="btn" style="background-color: #0077be;">Confirmar por</button>
@@ -275,7 +299,7 @@
         // --- FUNCIÓN AGREGAR A CALENDARIO ---
         function addToCalendar() {
             // ⚠️ CUIDADO: La fecha y hora son estimaciones. Si tu cumpleaños no es 6 de diciembre de 2025, cámbialos.
-            const googleMapsLocation = "Casa de la abuelita Argie, Acajutia"; 
+            const googleMapsLocation = "Casa de la abuelita Argie, Acajutla"; 
             const title = "Fiesta de Cumpleaños de Fernanda Mancia - Lilo & Stitch";
             const details = "¡Ohana significa familia! No te pierdas esta celebración. RSVP por WhatsApp.";
 
@@ -301,7 +325,6 @@
                 return;
             }
 
-            // Se extrae solo el número de personas del texto
             const personCount = count.split(" ")[0];
 
             const message = `¡Aloha! 🌺 Soy *${name}*. Quiero confirmar mi asistencia al cumple de Fernanda. Somos ${personCount} persona(s). ¡Nos vemos ahí!`;
