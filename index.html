@@ -22,7 +22,7 @@
             text-align: center;
             
             /* --- FONDO CON IMAGEN DIFUMINADA --- */
-            background-image: url('background.png'); /* Asume que subiste la imagen con este nombre */
+            background-image: url('background.png'); 
             background-size: cover;
             background-position: center center;
             background-attachment: fixed;
@@ -37,8 +37,8 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(255, 255, 255, 0.6); /* Capa blanca semi-transparente */
-            backdrop-filter: blur(2px); /* Un pequeño desenfoque opcional */
+            background-color: rgba(255, 255, 255, 0.6); 
+            backdrop-filter: blur(2px); 
             z-index: -1;
         }
         /* Fin de Fondo */
@@ -46,7 +46,7 @@
         .container {
             max-width: 600px;
             margin: 0 auto;
-            background: rgba(255, 255, 255, 0.9); /* Contenedor semi-transparente para que se vea el fondo */
+            background: rgba(255, 255, 255, 0.9); 
             box-shadow: 0 10px 25px rgba(0,0,0,0.1);
             overflow: hidden;
             min-height: 100vh;
@@ -63,16 +63,16 @@
         }
 
         .title-area {
-            display: flex; /* Contenedor flexible para el título y la foto */
+            display: flex; 
             align-items: center;
-            justify-content: center; /* Centra el contenido */
+            justify-content: center; 
             margin: 10px 0;
         }
 
         .fernanda-photo {
             width: 70px; 
             height: 70px;
-            border-radius: 50%; /* La hace circular */
+            border-radius: 50%; 
             object-fit: cover;
             margin: 0 15px;
             border: 4px solid var(--accent); 
@@ -210,19 +210,19 @@
                 </div>
                 <div class="detail-item">
                     <strong>🎭 Temática</strong>
-                    Lilo & Stitch ¡Traigan su mejor modo playero!
+                    Lilo & Stitch ¡Trae tu outfit playero!
                 </div>
             </div>
 
             <a href="https://maps.app.goo.gl/m9E65A1rmMuBgt9a7" target="_blank" class="btn btn-map">📍 Ver Ubicación en Mapa</a>
             
-            <button onclick="alert('Funcionalidad avanzada. Requiere configuración. ¡Ya estás casi listo!');" class="btn btn-map" style="background-color: #333;">📅 Agregar a Calendario</button>
+            <button onclick="addToCalendar()" class="btn btn-map" style="background-color: #333;">📅 Agregar a Calendario</button>
             
         </div>
 
         <div class="rsvp-section">
             <h2 style="font-family: 'Pacifico', cursive; color: var(--primary);">Confirmar Asistencia</h2>
-            <p>Por favor confirma para reservar tu espacio en la isla.</p>
+            <p>Por favor confirma para reservar tu espacio en la isla</p>
             
             <input type="text" id="guestName" placeholder="Tu Nombre Completo">
             <select id="guestCount">
@@ -236,15 +236,34 @@
         </div>
 
         <footer style="padding: 20px; font-size: 0.8em; color: #777;">
-            Te esperamos 🌺
+            Te esperamos 🌺<br>
+            <span style="font-size: 0.7em; margin-top: 5px; display: block;">Rodrigo Mancia ®</span>
         </footer>
     </div>
     
     <div id="audioControls">🎶 Música OFF (Activar)</div>
 
     <script>
+        // --- FUNCIÓN AGREGAR A CALENDARIO ---
+        function addToCalendar() {
+            // NOTA: Para Google Calendar, el formato de fecha debe ser YYYYMMDDTHHMMSSZ (zona horaria Z)
+            // Evento: Sábado 6 de Diciembre a las 3:30 PM (15:30)
+            
+            // Reemplaza TUS_COORDENADAS_AQUI con las coordenadas de Google Maps para un evento más preciso.
+            const googleMapsLocation = "Casa de la abuelita Argie, Acajutla"; 
+            const title = "Fiesta de Cumpleaños de Fernanda Mancia - Lilo & Stitch";
+            const details = "¡Ohana significa familia! No te pierdas esta celebración de cumpleaños. Trae tu mejor outfit playero. RSVP por WhatsApp.";
+
+            const startTime = "20251206T213000Z"; // 6 de Diciembre, 15:30 (Hora local), convertida a UTC (ejemplo)
+            const endTime = "20251207T003000Z"; // Evento de 3 horas.
+
+            const url = `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(title)}&dates=${startTime}/${endTime}&details=${encodeURIComponent(details)}&location=${encodeURIComponent(googleMapsLocation)}`;
+
+            window.open(url, '_blank');
+        }
+
+
         // --- CONFIGURACIÓN DE WHATSAPP ---
-        // ⚠️ ¡CÁMBIALO! Tu número de teléfono con código de país 
         const phoneNumber = "50376553642"; 
         
         function sendToWhatsapp() {
@@ -268,19 +287,16 @@
         const audioControls = document.getElementById('audioControls');
         let isPlaying = false;
 
-        // Escucha el primer clic en la página para intentar iniciar la música
-        // Esto es un truco para evitar el bloqueo del navegador
         document.addEventListener('click', function attemptAutoplay() {
             audio.play().then(() => {
                 isPlaying = true;
                 audioControls.textContent = '🎶 Música ON';
-                document.removeEventListener('click', attemptAutoplay); // Se desactiva después del primer intento exitoso
+                document.removeEventListener('click', attemptAutoplay); 
             }).catch(error => {
                 console.log("Autoplay bloqueado. Usar control manual.");
             });
-        }, { once: true }); // Solo escucha el primer clic
+        }, { once: true }); 
 
-        // Control manual
         audioControls.addEventListener('click', () => {
             if (isPlaying) {
                 audio.pause();
