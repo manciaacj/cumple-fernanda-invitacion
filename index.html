@@ -6,7 +6,7 @@
     <title>¡Aloha! Cumpleaños de Fernanda Mancia</title>
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* --- ESTILOS (DISEÑO) --- */
+        /* --- ESTILOS GENERALES (FONDO Y ESTRUCTURA) --- */
         :root {
             --primary: #0077be; /* Azul Océano */
             --accent: #ff6f61; /* Color Hibisco/Coral */
@@ -16,25 +16,43 @@
 
         body {
             font-family: 'Quicksand', sans-serif;
-            background-color: var(--light);
             margin: 0;
             padding: 0;
             color: var(--text);
             text-align: center;
-            /* Fondo de puntos estilo burbuja */
-            background-image: radial-gradient(#48c6ef 1px, transparent 1px);
-            background-size: 20px 20px;
+            
+            /* --- FONDO CON IMAGEN DIFUMINADA --- */
+            background-image: url('background.png'); /* Asume que subiste la imagen con este nombre */
+            background-size: cover;
+            background-position: center center;
+            background-attachment: fixed;
+            position: relative;
         }
+
+        /* Capa de difusión/opacidad sobre la imagen de fondo */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.6); /* Capa blanca semi-transparente */
+            backdrop-filter: blur(2px); /* Un pequeño desenfoque opcional */
+            z-index: -1;
+        }
+        /* Fin de Fondo */
 
         .container {
             max-width: 600px;
             margin: 0 auto;
-            background: white;
+            background: rgba(255, 255, 255, 0.9); /* Contenedor semi-transparente para que se vea el fondo */
             box-shadow: 0 10px 25px rgba(0,0,0,0.1);
             overflow: hidden;
             min-height: 100vh;
         }
 
+        /* --- ESTILOS DE ENCABEZADO Y FOTO DE CUMPLEAÑERA --- */
         header {
             background: var(--primary);
             color: white;
@@ -44,11 +62,29 @@
             position: relative;
         }
 
+        .title-area {
+            display: flex; /* Contenedor flexible para el título y la foto */
+            align-items: center;
+            justify-content: center; /* Centra el contenido */
+            margin: 10px 0;
+        }
+
+        .fernanda-photo {
+            width: 70px; 
+            height: 70px;
+            border-radius: 50%; /* La hace circular */
+            object-fit: cover;
+            margin: 0 15px;
+            border: 4px solid var(--accent); 
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
         h1 {
             font-family: 'Pacifico', cursive;
             font-size: 3em;
             margin: 0;
             text-shadow: 2px 2px 0px rgba(0,0,0,0.2);
+            line-height: 1.2;
         }
 
         .subtitle {
@@ -58,6 +94,7 @@
             margin-top: 10px;
         }
 
+        /* Resto de estilos */
         .info-card {
             padding: 30px;
         }
@@ -82,7 +119,6 @@
             font-size: 0.9em;
         }
 
-        /* Botones */
         .btn {
             display: inline-block;
             padding: 15px 30px;
@@ -108,7 +144,6 @@
             background-color: var(--primary);
         }
 
-        /* Formulario de asistencia */
         .rsvp-section {
             background: #fdf2f1;
             padding: 30px 20px;
@@ -124,7 +159,6 @@
             font-family: 'Quicksand', sans-serif;
         }
         
-        /* Estilo para el botón de música flotante */
         #audioControls {
             position: fixed;
             bottom: 20px;
@@ -149,9 +183,13 @@
 
     <div class="container">
         <header>
-            <div style="font-size: 4em;"><img src="stitch.png" alt="Stitch" style="width: 150px;"></div> 
             <p class="subtitle">¡Estás invitado al cumpleaños de!</p>
-            <h1>Fernanda Mancia</h1>
+            
+            <div class="title-area">
+                <img src="fernanda.png" alt="Foto de Fernanda" class="fernanda-photo">
+                
+                <h1>Fernanda Mancia</h1>
+            </div>
         </header>
 
         <div class="info-card">
@@ -168,15 +206,17 @@
                 </div>
                 <div class="detail-item">
                     <strong>🏖️ Lugar</strong>
-                    Casa de la abuelita Argie, Acajutla
+                    Casa de la abuelita Argelia, Acajutla
                 </div>
                 <div class="detail-item">
                     <strong>🎭 Temática</strong>
-                    Lilo & Stitch (¡Traigan su modo playero vichos!)
+                    Lilo & Stitch (¡Traigan su mejor actitud vichos!)
                 </div>
             </div>
 
             <a href="https://maps.app.goo.gl/m9E65A1rmMuBgt9a7" target="_blank" class="btn btn-map">📍 Ver Ubicación en Mapa</a>
+            
+            <button onclick="alert('Funcionalidad avanzada. Requiere configuración. ¡Ya estás casi listo!');" class="btn btn-map" style="background-color: #333;">📅 Agregar a Calendario</button>
             
         </div>
 
@@ -200,11 +240,11 @@
         </footer>
     </div>
     
-    <div id="audioControls">🎶 Música ON</div>
+    <div id="audioControls">🎶 Música OFF (Activar)</div>
 
     <script>
         // --- CONFIGURACIÓN DE WHATSAPP ---
-        // ¡IMPORTANTE! Cambia este número por el tuyo real: Código de país + Número
+        // ⚠️ ¡CÁMBIALO! Tu número de teléfono con código de país 
         const phoneNumber = "50376553642"; 
         
         function sendToWhatsapp() {
@@ -228,14 +268,19 @@
         const audioControls = document.getElementById('audioControls');
         let isPlaying = false;
 
-        audio.play().then(() => {
-            isPlaying = true;
-            audioControls.textContent = '🎶 Música ON';
-        }).catch(error => {
-            console.log("Autoplay bloqueado. Esperando interacción.");
-            audioControls.textContent = '🎶 Música OFF (Activar)';
-        });
+        // Escucha el primer clic en la página para intentar iniciar la música
+        // Esto es un truco para evitar el bloqueo del navegador
+        document.addEventListener('click', function attemptAutoplay() {
+            audio.play().then(() => {
+                isPlaying = true;
+                audioControls.textContent = '🎶 Música ON';
+                document.removeEventListener('click', attemptAutoplay); // Se desactiva después del primer intento exitoso
+            }).catch(error => {
+                console.log("Autoplay bloqueado. Usar control manual.");
+            });
+        }, { once: true }); // Solo escucha el primer clic
 
+        // Control manual
         audioControls.addEventListener('click', () => {
             if (isPlaying) {
                 audio.pause();
