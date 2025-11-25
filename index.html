@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>¡Aloha! Cumpleaños de Fernanda Mancia</title>
+    <title>¡Aloha! Invitacion Cumpleaños de Fernanda Mancia</title>
     <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
     
     <style>
-        /* --- 1. VARIABLES Y CONFIGURACIÓN GENERAL --- */
+        /* --- 1. VARIABLES GENERALES --- */
         :root {
-            --blue-header: #0077be; /* Azul Océano (ajustado para coincidir con ondas) */
+            --blue-header: #0077be; 
             --blue-light: #5fa8d3;
             --coral: #ff6f61;       
             --text-dark: #333;
@@ -22,7 +22,6 @@
             padding: 0;
             color: var(--text-dark);
             background-color: #ffffff;
-            /* El patrón de fondo (flores) */
             background-image: url('fondo-patron.png'); 
             background-size: 300px; 
             background-repeat: repeat;
@@ -30,7 +29,7 @@
             overflow-x: hidden; 
         }
 
-        /* CAPA DE DIFUMINADO (Para suavizar el fondo intenso) */
+        /* Capa para suavizar el fondo (marca de agua) */
         body::before {
             content: '';
             position: fixed;
@@ -38,38 +37,31 @@
             left: 0;
             width: 100%;
             height: 100%;
-            /* Blanco al 85% de opacidad: hace que el fondo negro se vea gris suave */
             background-color: rgba(255, 255, 255, 0.85); 
             z-index: -1;
         }
 
         /* --- 2. ENCABEZADO (HEADER) --- */
         .main-header {
-            /* Degradado sutil azul para dar profundidad sin imagen pesada */
             background: linear-gradient(180deg, #005f9e 0%, var(--blue-header) 100%);
             color: white;
             text-align: center;
             padding-top: 40px;
             position: relative;
-            /* Espacio suficiente abajo para las ondas */
             padding-bottom: 120px; 
         }
 
-        /* La imagen de ondas */
         .wave-separator {
             position: absolute;
-            bottom: -1px; /* Pegado al borde inferior */
+            bottom: -1px;
             left: 0;
             width: 100%;
             height: auto;
             z-index: 2;
             pointer-events: none;
-            /* Filtro opcional si el azul de la imagen no coincide exacto con el fondo */
-            /* filter: drop-shadow(0px -5px 10px rgba(0,0,0,0.1)); */
         }
 
-        /* DIFUSIÓN ENTRE ONDAS Y PATRÓN */
-        /* Creamos un degradado blanco justo debajo del header para que el patrón no corte de golpe */
+        /* Máscara de transición suave para el fondo */
         .header-transition-mask {
             position: absolute;
             bottom: -50px;
@@ -93,7 +85,6 @@
             font-family: 'Lobster', cursive;
             font-size: 3.5em;
             margin: 0;
-            /* Quitamos las imagenes de flores aquí según tu petición */
             text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
         }
 
@@ -120,7 +111,7 @@
             opacity: 0.9;
         }
 
-        /* Foto Circular */
+        /* --- SECCIÓN FOTO CENTRAL (MODIFICADO) --- */
         .photo-section {
             display: flex;
             align-items: center;
@@ -138,39 +129,42 @@
             backdrop-filter: blur(5px);
         }
 
+        /* Contenedor de la foto: Centrado perfecto y sin marco de color */
         .photo-wrapper {
             width: 140px;
             height: 140px;
-            background: var(--coral);
+            /* Eliminado background y padding para quitar el marco grueso */
             border-radius: 50%;
-            padding: 5px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3); /* Sombra un poco más marcada para resaltar */
             position: relative;
+            /* Flexbox para asegurar centrado perfecto de la imagen interna */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #fff; /* Fondo blanco por si la imagen es PNG transparente */
         }
 
+        /* La imagen en sí: Sin borde blanco */
         .profile-pic {
             width: 100%;
             height: 100%;
             border-radius: 50%;
             object-fit: cover;
-            border: 4px solid white;
-            box-sizing: border-box;
+            /* Eliminado border: 4px solid white; */
         }
 
-        /* --- 3. ESTRUCTURA DE TARJETAS (GRID) --- */
+        /* --- 3. ESTRUCTURA DE TARJETAS --- */
         .cards-container {
             max-width: 1000px;
-            margin: -60px auto 50px auto; /* Sube sobre el header */
+            margin: -60px auto 50px auto; 
             padding: 20px;
             position: relative;
             z-index: 10;
-            
             display: grid;
             grid-template-columns: 1fr; 
             gap: 25px;
         }
 
-        /* Estilo base de todas las tarjetas */
         .card {
             background: white;
             border-radius: 25px;
@@ -192,7 +186,6 @@
             padding-bottom: 10px;
         }
 
-        /* Lista de detalles */
         .details-list {
             list-style: none;
             padding: 0;
@@ -207,7 +200,6 @@
             font-size: 1.05em;
         }
 
-        /* Icono de palmera (usando emoji o imagen si la tienes) */
         .details-list li::before {
             content: '🌴'; 
             position: absolute;
@@ -223,14 +215,13 @@
             font-size: 0.9em;
         }
 
-        /* Columna Derecha */
         .right-column {
             display: flex;
             flex-direction: column;
             gap: 25px;
         }
 
-        /* ESTILOS BOTONES CLÁSICOS (Recuperados del diseño original) */
+        /* Botones y Formularios */
         .btn {
             display: block;
             width: 100%;
@@ -254,7 +245,6 @@
         .btn-map { background-color: var(--blue-header); margin-bottom: 10px; }
         .btn-cal { background-color: #333; }
 
-        /* Inputs del RSVP Originales */
         .form-input, .form-select {
             width: 100%;
             padding: 12px;
@@ -263,11 +253,11 @@
             border-radius: 10px;
             font-family: 'Quicksand', sans-serif;
             font-size: 1em;
-            box-sizing: border-box; /* Para que el padding no rompa el ancho */
+            box-sizing: border-box;
             background-color: #f9f9f9;
         }
 
-        /* --- 4. PIE DE PÁGINA Y AUDIO --- */
+        /* --- 4. FOOTER Y CONTROLES --- */
         .bottom-decoration {
             display: flex;
             justify-content: center;
@@ -319,13 +309,12 @@
     <header class="main-header">
         <div class="header-content">
             <h1 class="main-title">Aloha!</h1>
-            
             <h2 class="sub-title">¡CUMPLEAÑOS DE!</h2>
             <h1 class="name-title">Fernanda Mancia</h1>
-            
+            <p class="subtitle-text">CELEBRAMOS 7 AÑOS</p>
             
             <div class="photo-section">
-                <span class="side-text" style="color: #fff;">EST. 2019</span>
+                <span class="side-text" style="color: #fff;">SINCE 2019</span>
                 <div class="photo-wrapper">
                     <img src="fernanda.png" alt="Fernanda" class="profile-pic">
                 </div>
@@ -340,140 +329,84 @@
     <main class="cards-container">
         
         <section class="card details-card">
-            <h3 class="card-title">🌺 Detalles de la fiesta</h3>
+            <h3 class="card-title">🌺 Detalles del Evento</h3>
             <ul class="details-list">
-                <li>
-                    <strong>📅 Fecha</strong>
-                    Sábado 6 de Diciembre
-                </li>
-                <li>
-                    <strong>⏰ Hora</strong>
-                    3:30 PM
-                </li>
-                <li>
-                    <strong>🏖️ Lugar</strong>
-                    Casa de la abuelita Argie<br>
-                    <span style="font-size:0.9em; color:#666;">Acajutla, Sonsonate</span>
-                </li>
-                <li>
-                    <strong>🎭 Temática</strong>
-                    Lilo & Stitch
-                </li>
-                <li>
-                    <strong>👚 Dress Code</strong>
-                    Ropa playera o floral.
-                </li>
+                <li><strong>📅 Fecha</strong> Sábado 6 de Diciembre</li>
+                <li><strong>⏰ Hora</strong> 3:30 PM</li>
+                <li><strong>🏖️ Lugar</strong> Casa de la abuelita Argie<br><span style="font-size:0.9em; color:#666;">Acajutla, Sonsonate</span></li>
+                <li><strong>🎭 Temática</strong> Lilo & Stitch</li>
+                <li><strong>👚 Dress Code</strong> Ropa playera o floral.</li>
             </ul>
         </section>
 
         <div class="right-column">
-            
             <section class="card info-card">
                 <h3 class="card-title">📍 Ubicación</h3>
-                <p>Ya todos conocen, pero aca esta la direccion</p>
-                
-                <a href="https://maps.app.goo.gl/VnYT1QqrdPiSR3xp8" target="_blank" class="btn btn-map">
-                    Ver en Google Maps 🗺️
-                </a>
-
-                <button onclick="addToCalendar()" class="btn btn-cal">
-                    📅 Agregar a Calendario
-                </button>
+                <p>Ya conoces, pero aca te dejamos la ubicacion</p>
+                <a href="TU_LINK_DE_GOOGLE_MAPS_AQUI" target="_blank" class="btn btn-map">Ver en Google Maps 🗺️</a>
+                <button onclick="addToCalendar()" class="btn btn-cal">📅 Agregar a Calendario</button>
             </section>
 
             <section class="card rsvp-card">
                 <h3 class="card-title">✍️ Confirmar Asistencia</h3>
                 <p>Por favor confirma para reservar tu espacio en la isla</p>
-                
                 <input type="text" id="guestName" placeholder="Tu Nombre Completo" class="form-input">
-                
                 <select id="guestCount" class="form-select">
                     <option value="1">Asistiré solo yo</option>
                     <option value="2">Vamos 2 personas</option>
                     <option value="3">Vamos 3 personas</option>
                     <option value="4">Familia (4+)</option>
                 </select>
-
-                <button onclick="sendToWhatsapp()" class="btn">
-                    Confirmar por WhatsApp 💬
-                </button>
+                <button onclick="sendToWhatsapp()" class="btn">Confirmar por WhatsApp 💬</button>
             </section>
-
         </div>
     </main>
 
     <div class="bottom-decoration">
-         <span>🌺</span>
-         <span>🌺</span>
-         <span>🌺</span>
+         <span>🌺</span><span>🌺</span><span>🌺</span>
     </div>
     
     <footer style="text-align: center; font-size: 0.7em; color: #888; padding-bottom: 80px; position: relative; z-index: 10;">
         Rodrigo Mancia ®
     </footer>
 
-    <div id="audioControls">
-        <span>🎶</span> Música OFF
-    </div>
+    <div id="audioControls"><span>🎶</span> Musicon OFF</div>
 
     <script>
-        // CONFIGURACIÓN
         const phoneNumber = "50376553642"; 
         
-        // CALENDARIO
         function addToCalendar() {
             const title = "Cumpleaños Fernanda Mancia - Lilo & Stitch";
-            const details = "¡Ohana significa familia! Te espero para celebrar mi cumpleaños.";
+            const details = "¡Ohana significa familia! Te espero para celebrar";
             const location = "Casa de la abuelita Argie, Acajutla"; 
             const startTime = "20251206T213000Z"; 
             const endTime = "20251207T023000Z"; 
-
             const url = `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(title)}&dates=${startTime}/${endTime}&details=${encodeURIComponent(details)}&location=${encodeURIComponent(location)}`;
             window.open(url, '_blank');
         }
 
-        // WHATSAPP (Lógica Original Restaurada)
         function sendToWhatsapp() {
             const name = document.getElementById('guestName').value;
             const select = document.getElementById('guestCount');
             const count = select.options[select.selectedIndex].text;
-
-            if(name.trim() === "") {
-                alert("🌺 ¡Por favor escribe tu nombre!");
-                return;
-            }
-
-            const message = `¡Aloha! 🌺 Soy *${name}*. Quiero confirmar mi asistencia al cumpleaños de Fernanda. ${count}. ¡Nos vemos ahí!`;
+            if(name.trim() === "") { alert("🌺 ¡Por favor escribe tu nombre!"); return; }
+            const message = `¡Aloha! 🌺 Soy *${name}*. Quiero confirmar mi asistencia al cumple de Ferchi ${count}. ¡Nos vemos ahí!`;
             const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
             window.open(url, '_blank');
         }
 
-        // AUDIO
         const audio = document.getElementById('fiestaAudio');
         const btn = document.getElementById('audioControls');
         let isPlaying = false;
-
         document.addEventListener('click', function startAudio() {
             audio.play().then(() => {
-                isPlaying = true;
-                btn.innerHTML = '<span>🔊</span> Música ON';
-                document.removeEventListener('click', startAudio);
+                isPlaying = true; btn.innerHTML = '<span>🔊</span> Música ON'; document.removeEventListener('click', startAudio);
             }).catch(err => console.log("Autoplay bloqueado"));
         }, { once: true });
-
         btn.addEventListener('click', (e) => {
             e.stopPropagation();
-            if (isPlaying) {
-                audio.pause();
-                isPlaying = false;
-                btn.innerHTML = '<span>🔇</span> Música OFF';
-                btn.style.opacity = "0.7";
-            } else {
-                audio.play();
-                isPlaying = true;
-                btn.innerHTML = '<span>🔊</span> Música ON';
-                btn.style.opacity = "1";
-            }
+            if (isPlaying) { audio.pause(); isPlaying = false; btn.innerHTML = '<span>🔇</span> Música OFF'; btn.style.opacity = "0.7";
+            } else { audio.play(); isPlaying = true; btn.innerHTML = '<span>🔊</span> Música ON'; btn.style.opacity = "1"; }
         });
     </script>
 </body>
