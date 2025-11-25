@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Aloha! Cumpleaños de Fernanda Mancia</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* --- ESTILOS (DISEÑO) --- */
+        :root {
+            --primary: #0077be; /* Azul Océano */
+            --accent: #ff6f61; /* Color Hibisco/Coral */
+            --light: #e0f7fa; /* Azul muy claro */
+            --text: #333;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: var(--light);
+            margin: 0;
+            padding: 0;
+            color: var(--text);
+            text-align: center;
+            /* Fondo de puntos estilo burbuja */
+            background-image: radial-gradient(#48c6ef 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            overflow: hidden;
+            min-height: 100vh;
+        }
+
+        header {
+            background: var(--primary);
+            color: white;
+            padding: 40px 20px;
+            border-bottom-left-radius: 50% 20px;
+            border-bottom-right-radius: 50% 20px;
+            position: relative;
+        }
+
+        h1 {
+            font-family: 'Pacifico', cursive;
+            font-size: 3em;
+            margin: 0;
+            text-shadow: 2px 2px 0px rgba(0,0,0,0.2);
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-top: 10px;
+        }
+
+        .info-card {
+            padding: 30px;
+        }
+
+        .details {
+            background: #fff;
+            margin: 20px 0;
+            padding: 20px;
+            border: 2px dashed var(--primary);
+            border-radius: 15px;
+        }
+
+        .detail-item {
+            margin: 15px 0;
+            font-size: 1.1em;
+        }
+
+        .detail-item strong {
+            color: var(--accent);
+            display: block;
+            text-transform: uppercase;
+            font-size: 0.9em;
+        }
+
+        /* Botones */
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            margin: 10px;
+            transition: transform 0.2s;
+            border: none;
+            cursor: pointer;
+            font-size: 1em;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            background-color: #ff5040;
+        }
+
+        .btn-map {
+            background-color: var(--primary);
+        }
+
+        /* Formulario de asistencia */
+        .rsvp-section {
+            background: #fdf2f1;
+            padding: 30px 20px;
+            margin-top: 20px;
+        }
+
+        input, select {
+            width: 80%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-family: 'Quicksand', sans-serif;
+        }
+        
+        /* Estilo para el botón de música flotante */
+        #audioControls {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+
+    <audio id="fiestaAudio" loop>
+        <source src="musica.mp3" type="audio/mpeg"> 
+        Tu navegador no soporta el elemento de audio.
+    </audio>
+
+    <div class="container">
+        <header>
+            <div style="font-size: 4em;"><img src="stitch.png" alt="Stitch" style="width: 150px;"></div> 
+            <p class="subtitle">¡Estás invitado al cumpleaños de!</p>
+            <h1>Fernanda Mancia</h1>
+        </header>
+
+        <div class="info-card">
+            <p>¡Ohana significa familia, y la familia nunca te abandona... ni se pierde esta fiesta!</p>
+            
+            <div class="details">
+                <div class="detail-item">
+                    <strong>📅 Fecha</strong>
+                    Sábado 6 de Diciembre
+                </div>
+                <div class="detail-item">
+                    <strong>⏰ Hora</strong>
+                    3:30 PM
+                </div>
+                <div class="detail-item">
+                    <strong>🏖️ Lugar</strong>
+                    Casa de la abuelita Argie, Acajutla
+                </div>
+                <div class="detail-item">
+                    <strong>🎭 Temática</strong>
+                    Lilo & Stitch (¡Traigan su modo playero vichos!)
+                </div>
+            </div>
+
+            <a href="https://maps.app.goo.gl/m9E65A1rmMuBgt9a7" target="_blank" class="btn btn-map">📍 Ver Ubicación en Mapa</a>
+            
+        </div>
+
+        <div class="rsvp-section">
+            <h2 style="font-family: 'Pacifico', cursive; color: var(--primary);">Confirmar Asistencia</h2>
+            <p>Por favor confirma para reservar tu espacio en la isla.</p>
+            
+            <input type="text" id="guestName" placeholder="Tu Nombre Completo">
+            <select id="guestCount">
+                <option value="1">Asistiré solo yo</option>
+                <option value="2">Vamos 2 personas</option>
+                <option value="3">Vamos 3 personas</option>
+                <option value="4">Familia completa (4+)</option>
+            </select>
+
+            <button onclick="sendToWhatsapp()" class="btn">Confirmar por WhatsApp 💬</button>
+        </div>
+
+        <footer style="padding: 20px; font-size: 0.8em; color: #777;">
+            Te esperamos 🌺
+        </footer>
+    </div>
+    
+    <div id="audioControls">🎶 Música ON</div>
+
+    <script>
+        // --- CONFIGURACIÓN DE WHATSAPP ---
+        // ¡IMPORTANTE! Cambia este número por el tuyo real: Código de país + Número
+        const phoneNumber = "50376553642"; 
+        
+        function sendToWhatsapp() {
+            const name = document.getElementById('guestName').value;
+            const count = document.getElementById('guestCount').options[document.getElementById('guestCount').selectedIndex].text;
+
+            if(name.trim() === "") {
+                alert("Por favor escribe tu nombre para confirmar 🌺");
+                return;
+            }
+
+            const message = `¡Aloha! 🌺 Soy *${name}*. Quiero confirmar mi asistencia al cumple de Fernanda. ${count}. ¡Nos vemos ahí!`;
+            
+            const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+            
+            window.open(url, '_blank');
+        }
+
+        // --- LÓGICA DE AUDIO (MÚSICA) ---
+        const audio = document.getElementById('fiestaAudio');
+        const audioControls = document.getElementById('audioControls');
+        let isPlaying = false;
+
+        audio.play().then(() => {
+            isPlaying = true;
+            audioControls.textContent = '🎶 Música ON';
+        }).catch(error => {
+            console.log("Autoplay bloqueado. Esperando interacción.");
+            audioControls.textContent = '🎶 Música OFF (Activar)';
+        });
+
+        audioControls.addEventListener('click', () => {
+            if (isPlaying) {
+                audio.pause();
+                isPlaying = false;
+                audioControls.textContent = '🎶 Música OFF (Activar)';
+            } else {
+                audio.play();
+                isPlaying = true;
+                audioControls.textContent = '🎶 Música ON';
+            }
+        });
+    </script>
+</body>
+</html>
